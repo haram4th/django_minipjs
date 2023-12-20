@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'yes24/css/book.css' %}">
+    
+    <title>Book Recommandation</title>
+</head>
+
+<body>
+   
+    <h1>장르 및 태그 기반 책 추천 시스템</h1>
+    
+    <h3>아래의 책 중 하나를 선택하세요</h3>
+           
+    <div class="grid-container">
+
+        {% for cover in covers_10 %}
+        <div class="grid-item">
+            <form action="{% url 'yes24:yes24index' %}" method="POST" enctype="application/x-www-form-urlencoded">
+                {% csrf_token %}
+                <input type='hidden' name='book_id' value="{{cover}}">
+                <input type='image' class="coverimg" src="{% static 'yes24/book_img/'|add:cover %}" alt="{{cover}}">
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+   
+    <a href="{% url 'minipjs:main' %}">Main으로 돌아가기</a>
+    
+</body>
+
+</html>
