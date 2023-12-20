@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'minipjs',
     'polls.apps.PollsConfig',
     'yes24',
+    'books',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -83,11 +84,11 @@ WSGI_APPLICATION = 'django_test.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'yes24best',
+        'NAME': dbname,
         'USER': dbid,
         'PASSWORD': dbpw,
-        'HOST': '59.7.246.88',
-        'PORT': '33060',
+        'HOST': dbaddr,
+        'PORT': dbpt,
     }
 }
 

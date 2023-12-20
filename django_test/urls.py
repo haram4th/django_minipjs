@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include("minipjs.urls")),
     path('polls/', include("polls.urls")),
     path('yes24/', include("yes24.urls")),
+    path('books/', include("books.urls")),
 ]

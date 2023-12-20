@@ -1,4 +1,5 @@
 from django.db import models
+# from .validators import validate_com
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -14,3 +15,12 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+    
+
+# class Contact(models.Model):
+#     subject = models.CharField(max_length=100)
+#     message = models.CharField(max_length=200)
+#     sender = models.EmailField(validators=[validate_com])
+#     cc_myself = models.BooleanField(black=True, null=True)
+
+
