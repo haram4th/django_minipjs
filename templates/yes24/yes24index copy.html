@@ -19,17 +19,24 @@
            
     <div class="grid-container">
         {% for cover_name, cover_no in covers_10 %}
+        <div class="grid-item">
             <div class="grid-item">
-                <div class="grid-item">
-                    <a href="{% url 'yes24:book_detail' book_id=cover_no %}?cover_name={{ cover_name }}">
-                        <img class="coverimg" src="{% static 'yes24/book_img/'|add:cover_name %}" alt="{{ cover_name }}">
-                    </a>
-                </div>
+                <form action="{% url 'yes24:book_detail' book_id=cover_no %}" method="GET">
+                    {% csrf_token %}
+                    <input type='hidden' name='book_id' value="{{cover_no}}">
+                    <input type='hidden' name='cover_name' value="{{cover_name}}">
+                    <input type='image' class="coverimg" src="{% static 'yes24/book_img/'|add:cover_name %}" alt="{{cover_name}}">
+                </form>
             </div>
+        </div>
         {% endfor %}
     </div>
     
-    
+    <script>
+        function submitForm(formId) {
+            document.getElementById(formId).submit();
+        }
+    </script>
    
     <a href="{% url 'minipjs:main' %}">Main으로 돌아가기</a>
     

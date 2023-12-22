@@ -8,47 +8,26 @@
 from django.db import models
 
 
-class Yes24Best200801202311(models.Model):
-    book_id = models.TextField(blank=True, null=True)
+class Yes24Bestlist(models.Model):
+    index = models.BigIntegerField(blank=True, null=True)
+    book_id = models.TextField(primary_key=True)
     yy = models.BigIntegerField(blank=True, null=True)
     mon = models.BigIntegerField(blank=True, null=True)
     title_h = models.TextField(blank=True, null=True)
-    title_f = models.TextField(blank=True, null=True)
     title_m = models.TextField(blank=True, null=True)
     title_e = models.TextField(blank=True, null=True)
-    detail_link = models.TextField(blank=True, null=True)
     author = models.TextField(blank=True, null=True)
     publisher = models.TextField(blank=True, null=True)
     pub_date = models.TextField(blank=True, null=True)
     price = models.TextField(blank=True, null=True)
-    n_reviews = models.TextField(blank=True, null=True)
-    review_link = models.TextField(blank=True, null=True)
     rating = models.FloatField(blank=True, null=True)
-    tags = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'yes24best200801_202311'
-
-
-class Yes24BookDetail(models.Model):
-    book_id = models.TextField(blank=True, null=True)
     page = models.TextField(blank=True, null=True)
     weight = models.TextField(blank=True, null=True)
     size = models.TextField(blank=True, null=True)
     category = models.TextField(blank=True, null=True)
-    book_intro = models.TextField(blank=True, null=True)
     pub_book_intro = models.TextField(blank=True, null=True)
+    tags = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'yes24_book_detail'
-
-
-class Yes24OneLineReviews(models.Model):
-    book_id = models.TextField(blank=True, null=True)
-    one_line_review = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'yes24_one_line_reviews'
+        db_table = 'yes24bestlist'

@@ -14,9 +14,13 @@ h3 {
     margin: auto;
 }
 
-img {
-    width: 300px;
-    height: auto;
+img.img_detail_page {
+    width: auto;
+    height: 300px;
+    text-align: center;
+    margin: 0 auto; /* 수평 가운데 정렬을 위한 margin 속성 추가 */
+    display: block; /* 블록 요소로 설정하여 margin 속성이 적용되도록 함 */
+    border: solid 1px black;
 }
 
 .input_area {
@@ -52,8 +56,40 @@ td {
     /* border: solid 1px red; */
   }
 
-  .grid-item input[type='image'] {
+  .grid-item img.coverimg {
     max-width: 140px;
     height: 210px;
     border: solid 1px black;
-  }
+}
+
+/* book_detail.html 용 grid  */
+
+.book_detail_grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 좌측 이미지와 우측 정보 비율 조정 */
+    grid-gap: 20px; /* 그리드 아이템 간격 설정 */
+    margin: 1% auto auto 1%; /* 중앙 정렬 및 여백 설정 */
+}
+
+.book_detail_grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.img_detail_page {
+    max-width: 100%;
+    height: auto;
+    border: solid 1px black;
+}
+
+.info > p {
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    margin: 1%;
+}
+
+.introduction {
+    grid-column: span 2; /* 너비 2칸 차지 */
+    text-align: justify; /* 텍스트 양쪽 정렬 */
+}
