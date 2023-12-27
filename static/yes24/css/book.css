@@ -93,3 +93,47 @@ td {
     grid-column: span 2; /* 너비 2칸 차지 */
     text-align: justify; /* 텍스트 양쪽 정렬 */
 }
+
+
+.detail_body {
+    margin-left: 13%;
+    margin-right: 13%;
+}
+
+/* 가장 바깥쪽 div 요소에 대한 스타일을 추가해줘 */
+.outer-container {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row; /* 세로 방향으로 나열하도록 설정 */
+    justify-content: center; /* 가로 방향으로 가운데 정렬 */
+    align-items: center; /* 세로 방향으로 가운데 정렬 */
+    /* border: 1px solid red; */
+    flex-wrap: wrap;
+}
+
+/* 이미지를 감싸는 div 요소에 대한 스타일을 추가해줘 */
+.inner-container {
+    width: 140px; /* 가로 방향으로 전체 너비를 차지하도록 설정 */
+    height: 210px;
+    margin-bottom: 2%; /* 간격을 주고 */
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    border: 1px solid black;
+}
+
+/* img {
+    width: 100%; 
+    max-width: none; 
+    height: auto; 
+    display: block; 
+} */
+
+/* 추가로 이미지를 감싸는 컨테이너에 대한 스타일을 추가해줘 */
+.inner-container img.recommand {
+    width: 140px; /* 이미지 너비를 140px로 설정 */
+    height: 210px; /* 이미지 높이를 210px로 설정 */
+    object-fit: cover; /* 이미지를 자르지 않고 비율을 유지하며 채워줘 */
+
+}

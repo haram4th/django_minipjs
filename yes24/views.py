@@ -8,17 +8,18 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 from .models import Yes24Bestlist
 import re
+from .book_recommand import *
 
 pattern = re.compile(r'\d+')
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print(BASE_DIR)
+img_dir = os.path.join(BASE_DIR, 'static', 'yes24')
+
 def yes24index(request):
     
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    print(BASE_DIR)
-    img_dir = os.path.join(BASE_DIR, 'static', 'yes24', 'book_img')
-    
     # glob을 사용하여 jpg 파일을 모두 가져옴
-    book_cover_list = glob(os.path.join(img_dir, '*.jpg'))
+    book_cover_list = glob(os.path.join(img_dir, 'book_img/*.jpg'))
     # list로 변환
     book_cover_list = list(book_cover_list)
     # print(book_cover_list)
@@ -44,5 +45,17 @@ class BestDetailView(DetailView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['cover_name'] = self.request.GET.get('cover_name', '')  # 기본값은 빈 문자열
+        context['cover_name'] = self.request.GET.get('cover_name', '')
+        
+        input_book_id = self.kwargs.get(self.pk_url_kwarg)
+        recommendations = get_recommendations(input_book_id)
+        context['recommendations'] = recommendations
+
+        print(f"입력한 도서 '{input_book_id}'와 유사한 도서 {len(recommendations)}개:")
+        for i, book_title in enumerate(recommendations):
+            print(f"{i + 1}. {book_title}")
+
         return context
+
+      
+

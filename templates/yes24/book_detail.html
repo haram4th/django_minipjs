@@ -10,7 +10,7 @@
     <title>{{ book.title_h }}</title>
 </head>
 
-<body>
+<body class="detail_body">
     {% if book.title_f != None and book.title_e != None %}
         <h1>&#91;{{book.title_h}}&#93; {{book.title_f}}{{book.title_m}}</h1>
         <h3>{{book.title_e}}</h3>
@@ -50,11 +50,23 @@
         <div class="book_detail_grid-item introduction" colspan="2">
             <p>책 소개: {{book.pub_book_intro}}</p>
         </div>
+        
     </div>
 
+    <hr>
+
+        <h3>유사 카테고리 추천 도서</h3>
+    
+    <div class="outer-container">
+    {% for item in recommendations %}
+        <div class="inner-container">
+          <img class="recommand" src="{% static 'yes24/book_img/' %}{{ 'bcober_'|add:item|add:'.jpg' }}" alt="{{ 'bcober_'|add:item|add:'.jpg' }}">
+        </div>
+    {% endfor %}
+    </div>
     
 
-
+    <br>
     <a href="{% url 'minipjs:main' %}">Main으로 돌아가기</a>
 </body>
 
